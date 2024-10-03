@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ask a Prof</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+            height: 100%;
+            width: 93%;
+            margin-left: 100px;
+            background-image: url(''); /* Background image for body */
+            background: linear-gradient(135deg,#582e7a, #2c1e4a, #122341);
+            background-size: cover;
+            background-attachment: fixed;
+            color: white; /* Sets all text color to white */
+            overflow-x: auto; /* Allows scrolling */
+        }
+
+        .container {/* inside container */
+            display: flex;
+            width: 1200px;
+            height: 500px;
+            background: #ffeaea;
+            border-radius: 15px;
+            padding: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .sidebar {
+            padding: 20px 0;
+            display: flex;
+            flex-direction: column;
+            position: fixed;
+            top: 0px; /* Adjust based on header height */
+            left: 0;
+            width: 7%; /* Width of the gallery */
+            height: 100%;
+            background-color:  rgb(255, 224, 224); /* Background color */
+            color: white;
+            box-sizing: border-box;
+            align-items: center;
+        }
+
+        .sidebar img {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 20px;
+        }
+
+        .content {
+            width: 100%;
+            padding: 40px;
+        }
+
+        .content h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+            font-weight: bold;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1em;
+            outline: none;
+        }
+
+        .form-group textarea {
+            height: 80px;
+        }
+
+        .submit-btn {
+            padding: 10px 20px;
+            font-size: 1em;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+            background: linear-gradient(45deg, #1a73e8, #9c27b0);
+            color: #fff;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .submit-btn:hover {
+            background: linear-gradient(45deg, #9c27b0, #1a73e8);
+        }
+
+        .logo-container {
+            display: flex;
+            justify-content: flex-end;
+            margin-bottom: 20px;
+        }
+
+        .logo-container img {
+            width: 60px;
+            height: 60px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="sidebar">
+            <img src="Profile.png" alt="Icon 1">
+            <img src="Convo.png" alt="Icon 2">
+            <img src="Dash.png" alt="Icon 3">
+            <img src="Callendar.png" alt="Icon 4">
+            <img src="Ratings.png" alt="Icon 5">
+            <img src="Settings.png" alt="Icon 6">
+    </div>
+
+    <div class="container">
+        <div class="content">
+            <h2>Ask a Prof</h2>
+            <div class="form-group">
+                <input type="text" placeholder="Select Instructor" required>
+            </div>
+            <div class="form-group">
+                <input type="text" placeholder="Select Problem" required>
+            </div>
+            <div class="form-group">
+                <textarea placeholder="Provide Short Description of the Problem" required></textarea>
+            </div>
+            <div class="logo-container">
+                <img src="https://via.placeholder.com/60" alt="Logo">
+            </div>
+            <div class="form-group" style="text-align: center;">
+                <button type="submit" class="submit-btn">Submit</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

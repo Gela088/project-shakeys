@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Register Account</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #582e7a, #2c1e4a, #122341);
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .register-form {
+            background: #ffeaea;
+            padding: 30px;
+            border-radius: 15px;
+            width: 400px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        .register-form h2 {
+            margin-bottom: 20px;
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .register-form input {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin: 10px 5px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 1em;
+            outline: none;
+        }
+
+        .input-group {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .input-group input {
+            width: calc(50% - 10px);
+        }
+
+        .submit-btn {
+            padding: 10px 20px;
+            font-size: 1em;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+            background: linear-gradient(45deg, #1a73e8, #9c27b0);
+            color: #fff;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .submit-btn:hover {
+            background: linear-gradient(45deg, #9c27b0, #1a73e8);
+        }
+    </style>
+</head>
+<body>
+    <form class="register-form">
+        <h2>Register Account</h2>
+        <input type="text" placeholder="Email / ID Number" required>
+        <div class="input-group">
+            <input type="text" placeholder="Surname" required>
+            <input type="text" placeholder="Fist Name" required>
+        </div>
+        <div class="input-group">
+            <input type="text" placeholder="M.I." required>
+            <input type="text" placeholder="Password Recovery Email" required>
+        </div>
+        <input type="password" placeholder="Password" required>
+        <button type="submit" class="submit-btn">Submit</button>
+    </form>
+</body>
+</html>
