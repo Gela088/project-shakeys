@@ -16,11 +16,11 @@
             font-family: Arial, sans-serif;
         }
 
-        .register-form {
+        .register-form { /* container */
             background: #ffeaea;
-            padding: 30px;
             border-radius: 15px;
-            width: 400px;
+            width: 1000px;
+            height: 450px;
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
             text-align: center;
         }
@@ -33,21 +33,36 @@
         }
 
         .register-form input {
-            width: calc(100% - 20px);
+            width: calc(90% - 10px);
             padding: 10px;
             margin: 10px 5px;
             border-radius: 5px;
-            border: 1px solid #ccc;
+            border: 1px solid rgb(204, 204, 204);
             font-size: 1em;
             outline: none;
         }
 
         .input-group {
             display: flex;
-            justify-content: space-between;
         }
 
         .input-group input {
+            width: calc(40% - 10px);
+        }
+
+        .mi-group {
+            display: flex;
+        }
+
+        .mi-group input {
+            width: calc(20% - 10px);
+        }
+
+        .passrec-group {
+            display: flex;
+        }
+
+        .passrec-group input {
             width: calc(50% - 10px);
         }
 
@@ -66,21 +81,52 @@
         .submit-btn:hover {
             background: linear-gradient(45deg, #9c27b0, #1a73e8);
         }
+
+
+
+
+
+        .email-btn {
+            padding: 10px 20px;
+            font-size: 1em;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+            background: linear-gradient(45deg, #1a73e8, #9c27b0);
+            color: #fff;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .email-btn:hover {
+            background: linear-gradient(45deg, #9c27b0, #1a73e8);
+        }
+
+
+
+
+
     </style>
 </head>
 <body>
     <form class="register-form">
         <h2>Register Account</h2>
+
         <input type="text" placeholder="Email / ID Number" required>
         <div class="input-group">
             <input type="text" placeholder="Surname" required>
             <input type="text" placeholder="Fist Name" required>
+            <div class="mi-group">
+                <input type="text" placeholder="M.I." required>
+            </div>
         </div>
-        <div class="input-group">
-            <input type="text" placeholder="M.I." required>
+
+        <div class="passrec-group">
+            <input type="password" placeholder="Password" required>
             <input type="text" placeholder="Password Recovery Email" required>
         </div>
-        <input type="password" placeholder="Password" required>
+
+        <button type="G Login with School Email" class="email-btn">G Login with School Email</button>
         <button type="submit" class="submit-btn">Submit</button>
     </form>
 </body>
