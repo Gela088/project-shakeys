@@ -1,65 +1,45 @@
 body {
-    background: url("image.png");
+    background: url(background.png);
     background-size: cover; 
     background-attachment: fixed;
     background-position: center center; 
     background-repeat: no-repeat;
     height: 50vh; /* Makes sure it covers the entire viewport */
     margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 }
 
-/* Login Form */
-.login-container {
+.container {
+    width: 300px; /* Adjust the width of the container */
     padding: 20px;
-    padding-top:  50px; ;
-    background-color: #f0f0f0;
-    border: 1px solid #ccc;
-    height: 500px;
-    width: 400px;
-    margin-left: auto; 
-    margin-right: 160px;
-    margin-top: 80px;
-    border-radius: 40px;
+    background-color: transparent;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add some shadow for a subtle effect */
+    border-radius: 10px;
+    margin-right: auto; 
+    margin-left: 160px;
+    
 }
 
-h1 {
+.choice-container {
     text-align: center;
-}
-
-label {
-    display: block; 
-}
-
-input {
-    width: 90%;
-    padding: 12px;
-    border-radius: 25px;
-    margin: 0px;
-    font-size: 1rem;
-}
-
-#submit {
-    width: 96%;
-    padding: 9px;
-}
-a {
-    text-align: center;
-}
-.links {
-    text-align: center;
+    color: white;
 }
 
 button {
-    display: block;
-    width: 96%;
-    padding: 12px;
-    background:linear-gradient(45deg, #1a73e8, #9c27b0);
-    color: white;
-    border: none;
+    margin: 20px;
+    padding: 15px 30px;
+    font-size: 18px;
     cursor: pointer;
-    border-radius: 25px;
+    border: none;
+    border-radius: 8px;
+    background: linear-gradient(45deg, #9c27b0, #1a73e8);
+    color: white;
+    transition: background-color 0.3s ease;
 }
 
 button:hover {
-    background: linear-gradient(45deg, #9c27b0, #1a73e8);
+    background: linear-gradient(45deg, #1a73e8, #9c27b0);
 }
