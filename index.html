@@ -1,32 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Form</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <div class="login-container">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Login As</title>
+        <link rel="stylesheet" href="assets/css/login.css">
+    
+        <!-- Google Fonts -->
+        <link href="https://fonts.gstatic.com" rel="preconnect">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+    
+          <!-- Favicons -->
+        <link href="assets/img/Clogo.png" rel="icon">
+        <link href="assets/img/Clogo.png" rel="apple-touch-icon">
+    
+    </head>
+
+
+    <header id="header" class="header fixed-top d-flex align-items-center">
+    
+        <div class="d-flex align-items-center justify-content-between">
+          <a class="logo d-flex align-items-center">
+            <img src="assets/img/WBlogo.png" alt=""> <!-- LOGO @ Top -->
+            <span>Bridging the Gap</span>
+          </a>
+        </div><!-- End Logo -->
         
-        <h1>Login</h1>
-        <form>
-            <label for="email">Email / Student Number:</label>
-            <input type="text" id="email" name="email" placeholder="Email / Student Number" required><br><br>
+    </header><!-- End Header -->
 
-            <label for="access-code">Access Code:</label>
-            <input type="text" id="access-code" name="access-code" placeholder="Access Code"><br><br>
 
-            <input type="submit" value="LOGIN" id="submit">
-        </form>
-        <p class="links">
-            <a href="#">Register Account</a> |
-            <a href="#">Forget Password?</a>
-        </p>
 
-        <p>
-            <button>G Sign in with School Email</button>
-        </p>
+
+<body>
+    <div class="container1">
+    
+        <!-- Login Buttons -->
+        <div class="login-buttons">
+          <h1>Login as</h1>
+          <button type="submit" class="btntype1" onclick="location.href='studlogin.html'">Student</button>
+          <button type="submit" class="btntype1" onclick="location.href='proflogin.html'">Instructor</button>
+        </div>
+    
+        <!-- Illustration -->
+        <div class="illustrationas">
+          <img src="assets/img/1stpage.png" alt="Illustration">
+        </div>
+
     </div>
+
 </body>
+
 </html>
