@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="login.css">
+    <title>Register Account</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #582e7a, #2c1e4a, #122341);
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .register-form {
+            background: #fff;
+            border-radius: 15px;
+            width: 1000px;
+            height: auto;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            padding: 20px;
+        }
+
+        .register-form h2 {
+            margin-bottom: 20px;
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .register-form input {
+            width: calc(90% - 10px);
+            padding: 10px;
+            margin: 10px 5px;
+            border-radius: 5px;
+            border: 1px solid rgb(204, 204, 204);
+            font-size: 1em;
+            outline: none;
+        }
+        .register-form select {
+            width: calc(92% - 10px);
+            padding: 10px;
+            margin: 10px 5px;
+            border-radius: 5px;
+            border: 1px solid rgb(204, 204, 204);
+            font-size: 1em;
+            outline: none;
+        }
+
+        .input-group {
+            display: flex;
+            margin: 0 auto;
+            align-items: center;
+            width: 92%;
+        }
+
+        .input-group input {
+            width: calc(90% - 10px);
+        }
+
+        .mi-group input {
+            width: calc(80% - 10px);
+        }
+
+        .passrec-group {
+            display: flex;
+            width: 92%;
+            padding-left: 4%;
+        }
+
+        .passrec-group input {
+            width: calc(90% - 10px);
+        }
+
+        .submit-btn {
+            padding: 10px 20px;
+            font-size: 1em;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+            background: #a289b5;
+            color: #fff;
+            cursor: pointer;
+            transition: background 0.3s;
+            margin-top: 20px;
+        }
+
+        .submit-btn:hover {
+            background: #635071;
+        }
+    </style>
+</head>
+<body>
+    <form class="register-form">
+        <h2>Register Account</h2>
+
+        <input type="text" placeholder="Email / ID Number" required>
+        <div class="input-group">
+            <input type="text" placeholder="Surname" required>
+            <input type="text" placeholder="First Name" required>
+            <div class="mi-group">
+                <input type="text" placeholder="M.I." required>
+            </div>
+        </div>
+
+        <!-- Department Dropdown -->
+        <select id="department" name="department" required>
+            <option value="" disabled selected>Select Department</option>
+            <option value="Computer Studies and Systems">Department of Computer Studies and Systems</option>
+            <option value="Engineering">Department of Engineering</option>
+            <option value="Business Administration">Department of Business Administration</option>
+            <option value="Arts and Sciences"> Department of Arts and Sciences</option>
+            <option value="Education"> Department of Education</option>
+            <option value="Dentistry"> Department of Dentistry</option>
+        </select>
+
+        <!-- Program Dropdown -->
+        <select id="program" name="program" required>
+            <option value="" disabled selected>Select Program</option>
+        </select>
+
+        <select id="course" name="course" required>
+            <option value="" disabled selected>Select Course</option>
+        </select>
+
+        <!-- Password Section -->
+        <div class="passrec-group">
+            <input type="password" placeholder="Password" required>
+            <input type="text" placeholder="Password Recovery Email" required>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" class="submit-btn">Submit</button>
+    </form>
+
+    <script>
+        // Programs for each department
+        const programsByDepartment = {
+            "Computer Studies and Systems": ["Bachelor of Science in Information Technology (BSIT)", "Bachelor of Science in Computer Science (BSCS)", "Bachelor of Science in Information System (BSIS)", "Bachelor of Science in Entertainment and Multimedia Computing (BSEMC)", "Bachelor of Science in Data Science (BSDS)"],
+            "Engineering": ["Bachelor of Science in Computer Engineering (BSCpE)", "Bachelor of Science in Mechanical Engineering (BSME)", "Bachelor of Science in Electrical Engineering (BSEE)", "Bachelor of Science in Civil Engineering (BSCE)"],
+            "Business Administration":["Bachelor of Science in Accountancy (BSA)", "Bachelor of Science in Business Administration (BSBA)", "Bachelor of Science in Management Accounting (BSMA)", "Financial Management (BFM)", "Marketing Management (BMM)"],
+            "Arts and Sciences": ["Bachelor of Arts in Broadcasting (BAB)", "Bachelor of Arts in International Studies (BAIS)", "Bachelor of Arts in Political Science (BAPS)", "Bachelor of Science in Legal Management (BSLM)", "Bachelor of Science in Psychology (BSP)", "Bachelor of Science in Biology (Medical Biology Track)", "Bachelor of Science in Biology (Ecology and Biodiversity Track)", "Bachelor of Science in Hospitality Management (BSHM)", "Bachelor of Science in Tourism Management (BSTM)"],
+            "Education": ["Bachelor of Science in Exercise and Sports Sciences Major in Fitness And Sports Management (BSESS)", "Bachelor of Physical Education (BPEd)", "Bachelor of Secondary Education Major in English (BSEd)", "Bachelor of Special Needs Education (BSNEd)", "Bachelor of Elementary Education (BEEd)", "Bachelor of Science in Nutrition and Dietetics (BSND)"],
+            "Dentistry": ["Doctor of Dental Medicine (DMD)", "Master of Science in Dentistry (MSCD) Major in Prosthodontics", "Master of Science in Dentistry (MSCD) Major in Orthodontics", "Master of Science in Dentistry (MSCD) Major in Periodontics", "Master of Science in Dentistry (MSCD) Major in Endodontics"]
+        };
+        // Courses for each Program
+        const coursesByProgram = {
+            "Bachelor of Science in Information Technology (BSIT)": ["Data Analyst", "Network and Security Administration", "System Integration and Architecture", "Database Management Systems", "Mobile Application Development", "IT Project Management", "Cloud Computing", "Cybersecurity Fundamentals"],
+            "Bachelor of Science in Information System (BSIS)": ["Enterprise Architecture", "Business Process Management", "Database Management Systems", "Systems Analysis and Design", "IT Governance and Compliance", "Paroject Management in Information Systems", "System Analyst", "Information Systems Audit and Control"],
+            "Bachelor of Science in Entertainment and Multimedia Computing (BSEMC)": ["Game Development", "3D Animation and Modeling", "Digital Audio and Sound Design", "Augmented Reality and Virtual Reality", "Interactive Media Design", "Level Design and Game Mechanics", "Mobile Game Development"],
+            "Bachelor of Science in Data Science (BSDS)": ["Statistical Analysis and Modeling", "Data Mining and Warehousing", "Data Visualization", "Big Data Technologies", "Predictive Analytics", "Natural Language Processing", "Data Ethics and Privacy", "Advanced Analytics and Decision Science"],
+            "Bachelor of Science in Computer Science (BSCS)": ["Compiler Design", "Programming", "Theory of Computation","Machine Learning","Distributed Systems","Software Engineering","Graphics and Visualization", "Big Data Analytics"],
+            "Bachelor of Science in Computer Engineering (BSCpE)": ["Embedded Systems", "Circuits", "Computer Networks", "Operating Systems", "Data Structures and Algorithms", "Artificial Intelligence", "Robotics and Automation", "Software Engineering"],
+            "Bachelor of Science in Mechanical Engineering (BSME)": ["Thermodynamics", "Fluid Mechanics", "Heat Transfer", "Machine Design", "Manufacturing Processes", "Materials Science and Engineering", "Control Systems", "Mechanical Vibrations"],
+            "Bachelor of Science in Civil Engineering (BSCE)": ["Structural Analysis", "Reinforced Concrete Design", "Geotechnical Engineering", "Hydraulics and Hydrology", "Surveying and Geodetic Engineering", "Transportation Engineering", "Construction Project Management", "Environmental Engineering"],
+            "Bachelor of Science in Electrical Engineering (BSEE)": ["Electrical Circuit", "Microprocessor Systems", "Mathematics", "Digital Electronics", "Instrumentation and Control", "Power Systems analysis", "Electrical System Design"],
+            "Bachelor of Science in Accountancy (BSA)": ["Financial Accounting and Reporting" , "Budget Analyst", "Cost Accounting ", "Auditing and Assurance Principles","Income Tax", "Accounting Information Systems", "Ethics", "Government and Not-for-Profit Accounting"],
+            "Bachelor of Science in Business Administration (BSBA)": ["Principles of Management", "Organizational Behavior", "Strategic Management", "Business Law and Ethics", "Operations Management", "Entrepreneurship", "Financial Management", "Human Resource Management"],
+            "Bachelor of Science in Management Accounting (BSMA)": ["Performance Management", "Strategic Business Analysis", "Management Accounting Information Systems", "Budgeting and Financial Planning", "Corporate Governance and Risk Management", "Taxation for Management Accountants", "Financial Statement Analysis"],
+            "Financial Management (BFM)": ["Investment and Portfolio Management", "Banking and Financial Institutions", "International Finance", "Financial Risk Management", "Corporate Finance", "Capital Markets and Security", "Behavioral Finance"],
+            "Marketing Management (BMM)": ["Marketing Communications and Advertising", "Digital Marketing", "Marketing Research", "Brand Management", "Product and Pricing Management", "Retail Management", "Sales and Distribution Management", "International Marketing"],
+            "Bachelor of Arts in Broadcasting (BAB)": ["Introduction to Mass Communication", "Broadcast Journalism", "Media Ethics and Laws", "Television and Radio Production", "Media Writing and Editing", "Digital Media and Convergence", "Film and Video Production"],
+            "Bachelor of Arts in International Studies (BAIS)": ["Introduction to International Relations", "Global Governance", "Foreign Policy Analysis", "International Political Economy", "Regional Studies (Asia, Europe, etc.)", "International Law", "Diplomacy and Negotiation", "Global Conflict and Peace Studies"],
+            "Bachelor of Arts in Political Science (BAPS)": ["Comparative Politics", "Political Theory", "Public Administration and Governance", "International Relations", "Political Research and Methodology", "Public Policy and Analysis", "Political Dynamics", "Global Political Economy"],
+            "Bachelor of Science in Legal Management (BSLM)": ["Introduction to Law", "Obligations and Contracts", "Business and Corporate Law", "Property Law", "Criminal Law", "Labor Laws and Social Legislation", "Taxation Law", "Legal Writing and Reasoning"],
+            "Bachelor of Science in Psychology (BSP)": ["Introduction to Psychology", "Developmental Psychology", "Abnormal Psychology", "Clinical Psychology", "Psychological Assessment", "Counseling and Psychotherapy", "Social Psychology", "Experimental Psychology"],
+            "Bachelor of Science in Biology (Medical Biology Track)": ["Human Anatomy and Physiology", "Cell Biology", "Genetics", "Microbiology and Parasitology", "Immunology", "Pathophysiology", "Pharmacology", "Medical Biochemistry"],
+            "Bachelor of Science in Biology (Ecology and Biodiversity Track)": ["Ecology", "Biodiversity and Conservation Biology", "Plant Taxonomy", "Animal Behavior", "Environmental Science", "Marine Biology", "Forest Ecology", "Ecosystem Restoration"],
+            "Bachelor of Science in Hospitality Management (BSHM)": ["Introduction to Hospitality and Tourism", "Food and Beverage Service Management", "Housekeeping Operations", "Front Office Operations", "Culinary Arts and Kitchen Management", "Hospitality Facilities Management", "Events Management", "Customer Service Management"],
+            "Bachelor of Science in Tourism Management (BSTM)": ["Introduction to Tourism", "Tourism Planning and Development", "Travel and Tour Operations", "Heritage and Cultural Tourism", "Sustainable Tourism", "Tourism Marketing", "Event Planning and Management", "International Travel and Tourism Law"],
+            "Bachelor of Science in Exercise and Sports Sciences Major in Fitness And Sports Management (BSESS)": ["Human Anatomy and Physiology for Exercise", "Principles of Fitness and Wellness", "Strength and Conditioning Techniques", "Sports Nutrition", "Exercise Program Design", "Recreational Leadership and Outdoor Activities", "Sports Facility and Event Management", "Physical Activity for Special Populations"],
+            "Bachelor of Physical Education (BPEd)": ["Foundation of Physical Education", "Anatomy and Kinesiology", "Dance and Movement Education", "Team Sports", "Individual and Dual Sports", "Gymnastics and Rhythmic Activities", "Physical Fitness and Wellness", "Sports Coaching and Officiating"],
+            "Bachelor of Secondary Education Major in English (BSEd)": ["English Language Proficiency", "Structure of English", "Introduction to Linguistics", "Language Learning and Acquisition", "Literary Criticism", "Teaching English as a Second Language (TESL)", "Assessment in English Language Teaching", "World Literature"],
+            "Bachelor of Special Needs Education (BSNEd)": ["Behavior Management for Children with Special Needs", "Assessment of Learners with Special Needs", "Strategies for Teaching Exceptional Learners", "Speech and Language Development", "Instructional Materials Development for Special Education", "Psychology of Children with Special Needs", "Family and Community Involvement in Special Education", "Educational Technology for Special Needs"],
+            "Bachelor of Elementary Education (BEEd)": ["Child Growth and Development", "Principles of Teaching 1 and 2", "Curriculum Development in Elementary Education", "Assessment and Evaluation in Elementary Education", "Educational Technology", "Teaching Literacy and Numeracy", "Classroom Management", "Content and Pedagogy for the Elementary Grades"],
+            "Bachelor of Science in Nutrition and Dietetics (BSND)": ["Human Anatomy and Physiology", "Food Science and Technology", "Nutrition Across the Lifespan", "Medical Nutrition Therapy", "Food Service Systems Management", "Community Nutrition", "Clinical Nutrition", "Food Microbiology and Sanitation"],
+            "Doctor of Dental Medicine (DMD)": ["Human Anatomy and Oral Histology", "General and Dental Pharmacology", "Restorative Dentistry","Dental Materials Science", "Oral Pathology and Microbiology", "Periodontology", "Prosthodontics (Removable and Fixed)", "Orthodontics"],
+            "Master of Science in Dentistry (MSCD) Major in Prosthodontics": ["Advanced Dental Materials for Prosthodontics", "Occlusion and Temporomandibular Disorders", "Complete Dentures Prosthodontics", "Fixed Partial Dentures", "Implant Dentistry", "Esthetics and Restorative Dentistry", "Prosthodontics for Special Needs Patients", "Digital Prosthodontics Techniques"],
+            "Master of Science in Dentistry (MSCD) Major in Orthodontics": ["Growth and Development of the Craniofacial Complex", "Biomechanics in Orthodontics", "Diagnosis and Treatment Planning in Orthodontics", "Interceptive Orthodontics", "Fixed Orthodontic Appliances", "Orthodontic Treatment for Complex Cases", "Surgical Orthodontics", "Digital Orthodontics Techniques"],
+            "Master of Science in Dentistry (MSCD) Major in Periodontics": ["Periodontal Anatomy and Biology", "Periodontal Diagnosis and Treatment Planning", "Non-Surgical Periodontal Therapy", "Surgical Periodontal Therapy", "Implant Dentistry and Periodontics", "Periodontal Regeneration Techniques", "Periodontal Therapy for Medically Compromised Patients", "Advanced Periodontal Research"],
+            "Master of Science in Dentistry (MSCD) Major in Endodontics": ["Endodontic Anatomy and Pathophysiology", "Diagnosis and Treatment Planning in Endodontics", "Root Canal Therapy", "Non-Surgical Endodontic Techniques", "Endodontic Microsurgery", "Management of Traumatic Dental Injuries", "Endodontic Treatment for Complex Cases", "Digital Imaging and Endodontics"],
+        } 
+
+        // References to dropdowns
+        const departmentSelect = document.getElementById("department");
+        const programSelect = document.getElementById("program");
+        const courseSelect = document.getElementById("course");
+
+        // Event listener for department change
+        departmentSelect.addEventListener("change", function () {
+            const selectedDepartment = this.value;
+
+            // Clear previous program options
+            programSelect.innerHTML = '<option value="" disabled selected>Select Program</option>';
+
+            // Populate programs based on the selected department
+            if (programsByDepartment[selectedDepartment]) {
+                programsByDepartment[selectedDepartment].forEach(program => {
+                    const option = document.createElement("option");
+                    option.value = program;
+                    option.textContent = program;
+                    programSelect.appendChild(option);
+                });
+            }
+        });
+        
+        // Update courses when program changes
+        programSelect.addEventListener("change", function () {
+            const selectedProgram = this.value;
+            courseSelect.innerHTML = '<option value="" disabled selected>Select Course</option>';
+
+            if (coursesByProgram[selectedProgram]) {
+                coursesByProgram[selectedProgram].forEach(course => {
+                    const option = document.createElement("option");
+                    option.value = course;
+                    option.textContent = course;
+                    courseSelect.appendChild(option);
+                });
+            }
+        });
+    </script>
+</body>
+</html>
