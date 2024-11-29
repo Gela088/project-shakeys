@@ -1,0 +1,225 @@
+/*--------------------------------------------------------------
+containers
+--------------------------------------------------------------*/
+body {
+  font-family: "Open Sans", sans-serif;
+  background: linear-gradient(135deg, #582e7a, #2c1e4a, #122341);
+  color: white;
+}
+
+.main-container {/* holds the login and left-section container*/
+  display: flex;
+  flex-direction: row;
+  width: 95%;
+  height: auto;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 60px;
+}
+
+/* Left Section - Character Illustration */
+.left-section {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.illustration {
+  max-width: 90%;
+  height: auto;
+}
+
+/* Login Container */
+.login-container {
+  padding: 15px;
+  border: 1px solid #c1c1c1;
+  height: 480px;
+  width: 380px;
+  border-radius: 40px;
+  color:  #122341;
+  align-items: center;
+  flex-direction: column;
+  background-color: #e0e0e0; /* Light gray background */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+/* form is another container inside login-container */
+form {
+  display: flex;
+  height: 300px;
+  width: 380px;
+  color:  #122341;
+  align-items: center;
+  flex-direction: column;
+  background-color: #e0e0e0; /* Light gray background */
+}
+
+
+
+
+/*--------------------------------------------------------------
+what inside the containers
+--------------------------------------------------------------*/
+h1 {
+  text-align: center;
+}
+
+label {
+  display: block;
+  width: 95%;
+  text-align: left;
+}
+
+/* Input Fields */
+input {
+  width: 90%;
+  padding: 10px;
+  border-radius: 15px;
+  font-size: 1rem;
+}
+
+a {
+  text-align: center;
+  color: #012970;
+}
+
+.links {
+  text-align: center;
+}
+
+/*--------------------------------------------------------------
+Buttons
+--------------------------------------------------------------*/
+button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 12px;
+  border-radius: 25px;
+  border: none;
+  cursor: pointer;
+  color: white;
+  font-size: 16px;
+}
+
+
+/* to center the small simple button */
+.center-login-btn {
+  color: white;
+  text-align: center;
+  width: auto;
+  align-self: center;
+  height: 35px;
+  padding: 7px 20px;
+  font-size:  16px;
+  background:  #122341;
+}
+
+.center-login-btn:hover {
+  background: #c1c1c1;
+  color: #122341;
+}
+
+
+.btntype1 {
+  color: #122341;
+  text-align: center;
+  width: auto;
+  align-self: center;
+  height: 35px;
+  padding: 7px 20px;
+  font-size:  16px;
+  background:  #ebebeb;
+}
+
+.btntype1:hover {
+  background: #122341;
+  color: #ebebeb;
+}
+
+
+.btntype2 {
+  width: 300px;
+  height: 30px;
+  padding: 7px 20px;
+  font-size: 14px;
+  background:linear-gradient(45deg, #1a73e8, #9c27b0);
+  transition: background-color 0.3s ease;
+}
+
+.btntype2:hover {
+  background: linear-gradient(45deg, #9c27b0, #1a73e8);
+}
+
+
+.google-login img {
+  width: 20px;
+  height: 20px;
+}
+
+
+
+/*--------------------------------------------------------------
+# Header
+--------------------------------------------------------------*/
+.header {
+  transition: all 0.5s;
+  z-index: 997;
+  height: 60px;
+  box-shadow: 0px 2px 20px rgba(1, 41, 112, 0.1);
+  padding-left: 20px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo img {
+  max-height: 50px; 
+  margin-right: 10px; 
+}
+
+.logo span {
+  font-size: 26px;
+  font-weight: 700;
+  color: white; 
+  font-family: "Nunito", sans-serif; 
+  line-height: 1; 
+}
+
+@media (min-width: 1200px) {
+  .logo {
+    width: 280px;
+  }
+}
+
+
+
+/*--------------------------------------------------------------
+Login As
+--------------------------------------------------------------*/
+.container1 {
+  text-align: center;
+  max-width: 100%;
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+}
+
+.login-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding-left: 115px;
+  padding-right: 50px;
+  width: 200px;
+}
+
+.illustrationas img {
+  width: 100%;
+  max-width: 650px;
+  padding-left: 100px;
+}
