@@ -119,15 +119,25 @@
     <form class="register-form" id="regForm">
         <h2>Register Account</h2>
 
-        <input id="email" type="text" placeholder="Email" required>
-        <input id="studId" type="text" placeholder="ID Number" required>
-
         <div class="input-group" id="fullName">
             <input type="text" placeholder="Surname" required>
             <input type="text" placeholder="First Name" required>
             <div class="mi-group">
                 <input type="text" placeholder="M.I.">
             </div>
+        </div>
+
+
+        <div class="passrec-group">
+            <input id="email" type="text" placeholder="Email" required>
+            <input id="studId" type="text" placeholder="ID Number" required>
+        </div>
+
+
+        <!-- Password Section -->
+        <div class="passrec-group">
+            <input type="password" placeholder="Password" required>
+            <input type="text" placeholder="Password Recovery Email" required>
         </div>
 
 
@@ -158,11 +168,6 @@
             <option value="" disabled selected>Select Course</option>
         </select>
 
-        <!-- Password Section -->
-        <div class="passrec-group">
-            <input type="password" placeholder="Password" required>
-            <input type="text" placeholder="Password Recovery Email" required>
-        </div>
 
         <!-- Submit Button -->
         <button type="submit" class="submit-btn">Submit</button>
