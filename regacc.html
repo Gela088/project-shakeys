@@ -16,6 +16,11 @@
 
 
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
+
+
+
     <style>
         body {
             display: flex;
@@ -111,11 +116,13 @@
 
 
 <body>
-    <form class="register-form">
+    <form class="register-form" id="regForm">
         <h2>Register Account</h2>
 
-        <input type="text" placeholder="Email / ID Number" required>
-        <div class="input-group">
+        <input id="email" type="text" placeholder="Email" required>
+        <input id="studId" type="text" placeholder="ID Number" required>
+
+        <div class="input-group" id="fullName">
             <input type="text" placeholder="Surname" required>
             <input type="text" placeholder="First Name" required>
             <div class="mi-group">

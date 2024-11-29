@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>File A Concern</title>
+  <title>Ask A Concern</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -29,6 +29,11 @@
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
 
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
+
+  
 </head>
 
 
@@ -283,7 +288,7 @@
         </a>
 
         <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-journal-text"></i><span>File A Concern</span><i class="bi bi-chevron-down ms-auto"></i>
+          <i class="bi bi-journal-text"></i><span>Ask A Concern</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
         <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
@@ -301,7 +306,7 @@
 
         <a class="nav-link collapsed" href="pages-blank.html">
           <i class="bi bi-layout-text-window-reverse"></i>
-          <span>Callendar</span>
+          <span>Calendar</span>
         </a>
 
         <a class="nav-link collapsed" href="charts-chartjs.html">
@@ -340,18 +345,27 @@
   </aside><!-- End Sidebar-->
 
 
+
+
+
+
+
+
   <main id="main" class="main">
 
     <div class="pagetitle">
-      <h1>File A Concern</h1>
+      <h1>Ask A Concern</h1>
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="dashboard.html">Home</a></li>
-          <li class="breadcrumb-item">File A Concern</li>
+          <li class="breadcrumb-item">Ask A Concern</li>
           <li class="breadcrumb-item active">Submit A Concern</li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
+
+
+
 
     <section class="section">
       <div class="row">
@@ -361,37 +375,76 @@
               <h5 class="card-title">Concern Form</h5>
 
               <!-- Vertical Form -->
-              <form class="row g-3">
-                <div class="col-md-4">
+              <form class="row g-3" id="concernForm">
+
+                <div class="col-12"><!-- class="col-md-4" former class -->
+                  <label for="inputPassword4" class="form-label">Department</label>
+                  <select id="deptState" class="form-select">
+                    <option selected>CPE</option>
+                    <option>EDUC</option>
+                    <option>NEE</option>
+                    <option>GE</option>
+                  </select>
+                </div>
+
+
+                <div class="col-12">
+                  <label for="inputPassword4" class="form-label">Program</label>
+                  <select id="programState" class="form-select">
+                    <option selected>0</option>
+                    <option>NCP</option>
+                    <option>NEE</option>
+                    <option>GE</option>
+                  </select>
+                </div>
+
+  
+                <div class="col-12">
+                  <label for="inputPassword4" class="form-label">Course</label>
+                  <select id="courseState" class="form-select">
+                    <option selected>0</option>
+                    <option>NCP</option>
+                    <option>NEE</option>
+                    <option>GE</option>
+                  </select>
+                </div>
+
+            
+                <div class="col-12">
                   <label for="inputPassword4" class="form-label">Select Prof</label>
-                  <select id="inputState" class="form-select">
+                  <select id="educState" class="form-select">
                     <option selected>0</option>
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
+                    <option>Sir EJ</option>
+                    <option>Maam Lim</option>
+                    <option>Sir Corpus</option>
                   </select>
                 </div>
-                <div class="col-md-4">
+
+                <div class="col-12">
                   <label for="inputPassword4" class="form-label">Select Concern</label>
-                  <select id="inputState" class="form-select">
+                  <select id="concernState" class="form-select">
                     <option selected>0</option>
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
+                    <option>Grade</option>
+                    <option>Missed Quiz/Exam</option>
+                    <option>You tell me</option>
                   </select>
                 </div>
+
                 <div class="col-12">
-                  <label for="inputPassword4" class="form-label">Other:</label>
-                  <input type="password" class="form-control" id="inputPassword4">
+                  <label for="inputPassword4" class="form-label">Other Concern:</label>
+                  <input type="text" class="form-control" id="otherConcernState">
                 </div>
+
                 <div class="col-12">
-                  <label for="inputAddress" class="form-label">Description:</label>
-                  <input type="text" class="form-control" id="inputAddress" placeholder="">
+                  <label for="inputAddress" class="form-label">Short Description of Concern:</label>
+                  <input type="text" class="form-control" id="desConcernState" placeholder="">
                 </div>
+
                 <div class="text-center">
                   <button type="submit" class="btn btn-primary">Submit</button>
                   <button type="reset" class="btn btn-secondary">Reset</button>
                 </div>
+
               </form><!-- Vertical Form -->
 
             </div>
@@ -403,16 +456,18 @@
 
   </main><!-- End #main -->
 
+
+
+
+
+
+
   <!-- ======= Footer ======= -->
   <footer id="footer" class="footer">
     <div class="copyright">
       &copy; Copyright <strong><span>Project Shakey's</span></strong>. All Rights Reserved
     </div>
     <div class="credits">
-      <!-- All the links in the footer should remain intact. -->
-      <!-- You can delete the links only if you purchased the pro version. -->
-      <!-- Licensing information: https://bootstrapmade.com/license/ -->
-      <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
       Designed by <a href="https://bootstrapmade.com/">Project Shakey's</a>
     </div>
   </footer><!-- End Footer -->
