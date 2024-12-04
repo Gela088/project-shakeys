@@ -378,9 +378,9 @@
               <form class="row g-3" id="concernForm">
 
                 <div class="col-12"><!-- class="col-md-4" former class -->
-                  <label for="inputPassword4" class="form-label">Department</label>
                   <select id="deptState" class="form-select">
-                    <option selected>CPE</option>
+                    <option value="" disabled selected>Select Department</option>
+                    <option>CPE</option>
                     <option>EDUC</option>
                     <option>NEE</option>
                     <option>GE</option>
@@ -389,9 +389,8 @@
 
 
                 <div class="col-12">
-                  <label for="inputPassword4" class="form-label">Program</label>
                   <select id="programState" class="form-select">
-                    <option selected>0</option>
+                    <option value="" disabled selected>Select Program</option>
                     <option>NCP</option>
                     <option>NEE</option>
                     <option>GE</option>
@@ -400,9 +399,8 @@
 
   
                 <div class="col-12">
-                  <label for="inputPassword4" class="form-label">Course</label>
                   <select id="courseState" class="form-select">
-                    <option selected>0</option>
+                    <option value="" disabled selected>Select Course</option>
                     <option>NCP</option>
                     <option>NEE</option>
                     <option>GE</option>
@@ -411,9 +409,8 @@
 
             
                 <div class="col-12">
-                  <label for="inputPassword4" class="form-label">Select Prof</label>
                   <select id="educState" class="form-select">
-                    <option selected>0</option>
+                    <option value="" disabled selected>Select Prof</option>
                     <option>Sir EJ</option>
                     <option>Maam Lim</option>
                     <option>Sir Corpus</option>
@@ -421,9 +418,8 @@
                 </div>
 
                 <div class="col-12">
-                  <label for="inputPassword4" class="form-label">Select Concern</label>
                   <select id="concernState" class="form-select">
-                    <option selected>0</option>
+                    <option value="" disabled selected>Select Concern</option>
                     <option>Grade</option>
                     <option>Missed Quiz/Exam</option>
                     <option>You tell me</option>
@@ -431,12 +427,12 @@
                 </div>
 
                 <div class="col-12">
-                  <label for="inputPassword4" class="form-label">Other Concern:</label>
+                  <label class="form-label">Other Concern:</label>
                   <input type="text" class="form-control" id="otherConcernState">
                 </div>
 
                 <div class="col-12">
-                  <label for="inputAddress" class="form-label">Short Description of Concern:</label>
+                  <label class="form-label">Short Description of Concern:</label>
                   <input type="text" class="form-control" id="desConcernState" placeholder="">
                 </div>
 
@@ -486,7 +482,6 @@
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
-
 </body>
 
 </html>

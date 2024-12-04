@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="login.css">
     <title>Register Account</title>
 
     <!-- Google Fonts -->
@@ -23,23 +22,27 @@
 
     <style>
         body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background: linear-gradient(135deg, #582e7a, #2c1e4a, #122341);
-            margin: 0;
-            font-family: Arial, sans-serif;
+            font-family: "Open Sans", sans-serif;
+             background: linear-gradient(135deg, #582e7a, #2c1e4a, #122341);
+            color: white;
+        }
+
+
+        .main-container {/* holds the login and left-section container*/
+             flex-direction: column;
+             align-items: center;
         }
 
         .register-form {
             background: #fff;
             border-radius: 15px;
-            width: 1000px;
+            width: 970px;
             height: auto;
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
             text-align: center;
             padding: 20px;
+            margin-left: 50px;
+            margin-bottom: 100px;
         }
 
         .register-form h2 {
@@ -109,69 +112,120 @@
         .submit-btn:hover {
             background: #635071;
         }
+        
+
+
+        .header {
+            transition: all 0.5s;
+            z-index: 997;
+            height: 60px;
+            box-shadow: 0px 2px 20px rgba(1, 41, 112, 0.1);
+            padding-left: 20px;
+            margin-bottom: 30px;
+        }
+
+        .logo {
+           display: flex;
+           align-items: center;
+         }
+
+        .logo img {
+         max-height: 50px; 
+        margin-right: 10px; 
+        }
+
+       .logo span {
+          font-size: 26px;
+         font-weight: 700;
+          color: white; 
+          font-family: "Nunito", sans-serif; 
+          line-height: 1; 
+        }
+
+         @media (min-width: 1200px) {
+          .logo {
+               width: 280px;
+            }
+        }
+
     </style>
 
 </head>
 
 
 
+<header id="header" class="header fixed-top d-flex align-items-center">
+    
+    <div class="d-flex align-items-center justify-content-between">
+      <a class="logo d-flex align-items-center">
+        <img src="assets/img/WBlogo.png" alt=""> <!-- LOGO @ Top -->
+        <span>Bridging the Gap</span>
+      </a>
+    </div><!-- End Logo -->
+    
+</header><!-- End Header -->
+
+
+
 <body>
-    <form class="register-form" id="regForm">
-        <h2>Register Account</h2>
+    <div class="main-container"></div>
+        <form class="register-form" id="regForm">
+            <h2>Register Account</h2>
 
-        <div class="input-group" id="fullName">
-            <input type="text" placeholder="Surname" required>
-            <input type="text" placeholder="First Name" required>
-            <div class="mi-group">
-                <input type="text" placeholder="M.I.">
+            <div class="input-group" id="fullName">
+                <input type="text" placeholder="Surname" required>
+                <input type="text" placeholder="First Name" required>
+                <div class="mi-group">
+                    <input type="text" placeholder="M.I.">
+                </div>
             </div>
-        </div>
-
-
-        <div class="passrec-group">
-            <input id="email" type="text" placeholder="Email" required>
-            <input id="studId" type="text" placeholder="ID Number" required>
-        </div>
-
-
-        <!-- Password Section -->
-        <div class="passrec-group">
-            <input type="password" placeholder="Password" required>
-            <input type="text" placeholder="Password Recovery Email" required>
-        </div>
-
-
-        <!-- Department Dropdown -->
-        <select id="identity" name="identity" required>
-            <option value="" disabled selected>Register As:</option>
-            <option value="Educator">Educator</option>
-            <option value="Student">Student</option>
-        </select>
-
-        <!-- Department Dropdown -->
-        <select id="department" name="department" required>
-            <option value="" disabled selected>Select Department</option>
-            <option value="Computer Studies and Systems">Department of Computer Studies and Systems</option>
-            <option value="Engineering">Department of Engineering</option>
-            <option value="Business Administration">Department of Business Administration</option>
-            <option value="Arts and Sciences"> Department of Arts and Sciences</option>
-            <option value="Education"> Department of Education</option>
-            <option value="Dentistry"> Department of Dentistry</option>
-        </select>
-
-        <!-- Program Dropdown -->
-        <select id="program" name="program" required>
-            <option value="" disabled selected>Select Program</option>
-        </select>
-
-        <select id="course" name="course" required>
-            <option value="" disabled selected>Select Course</option>
-        </select>
-
-
-        <!-- Submit Button -->
-        <button type="submit" class="submit-btn">Submit</button>
-    </form>
+    
+    
+            <div class="passrec-group">
+                <input id="email" type="text" placeholder="Email" required>
+                <input id="studId" type="text" placeholder="ID Number" required>
+            </div>
+    
+    
+            <!-- Password Section -->
+            <div class="passrec-group">
+                <input type="password" placeholder="Password" required>
+                <input type="text" placeholder="Password Recovery Email" required>
+            </div>
+    
+    
+            <!-- Department Dropdown -->
+            <select id="identity" name="identity" required>
+                <option value="" disabled selected>Register As:</option>
+                <option value="Educator">Educator</option>
+                <option value="Student">Student</option>
+            </select>
+    
+            <!-- Department Dropdown -->
+            <select id="department" name="department" required>
+                <option value="" disabled selected>Select Department</option>
+                <option value="Computer Studies and Systems">Department of Computer Studies and Systems</option>
+                <option value="Engineering">Department of Engineering</option>
+                <option value="Business Administration">Department of Business Administration</option>
+                <option value="Arts and Sciences"> Department of Arts and Sciences</option>
+                <option value="Education"> Department of Education</option>
+                <option value="Dentistry"> Department of Dentistry</option>
+            </select>
+    
+            <!-- Program Dropdown -->
+            <select id="program" name="program" required>
+                <option value="" disabled selected>Select Program</option>
+            </select>
+    
+            <select id="course" name="course" required>
+                <option value="" disabled selected>Select Course</option>
+            </select>
+    
+    
+            <!-- Submit Button -->
+            <button type="submit" class="submit-btn">Submit</button>  
+        </form>
+    </div>
 
     <script>
         // Programs for each department
