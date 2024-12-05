@@ -316,127 +316,6 @@
 
 
 
-// CALENDAR
-const daysContainer = document.getElementById("days");
-const monthYear = document.getElementById("monthYear");
-const prevMonthBtn = document.getElementById("prevMonth");
-const nextMonthBtn = document.getElementById("nextMonth");
-const noteModal = document.getElementById("noteModal");
-const noteInput = document.getElementById("noteInput");
-const saveNoteBtn = document.getElementById("saveNote");
-const closeModal = document.querySelector(".close");
-
-// Set user role (for demo purposes: "admin" or "user")
-const currentUserRole = "admin"; // Change this to "user" for non-admin
-
-let currentDate = new Date();
-let notes = JSON.parse(localStorage.getItem("calendarNotes")) || {};
-
-// Functions to render the calendar
-function renderCalendar() {
-  const year = currentDate.getFullYear();
-  const month = currentDate.getMonth();
-
-  const firstDay = new Date(year, month, 1).getDay();
-  const lastDate = new Date(year, month + 1, 0).getDate();
-
-  monthYear.textContent = currentDate.toLocaleDateString("en-US", {
-    month: "long",
-    year: "numeric",
-  });
-
-  daysContainer.innerHTML = "";
-
-  // Fill in the days
-  for (let i = 0; i < firstDay; i++) {
-    daysContainer.innerHTML += `<div></div>`;
-  }
-
-  for (let day = 1; day <= lastDate; day++) {
-    const isToday =
-      day === new Date().getDate() &&
-      month === new Date().getMonth() &&
-      year === new Date().getFullYear();
-
-    const note = notes[`${year}-${month}-${day}`];
-    const hasNote = note ? "has-note" : "";
-
-    daysContainer.innerHTML += `
-      <div class="day ${isToday ? "current-day" : ""} ${hasNote}" 
-           data-date="${year}-${month}-${day}" 
-           data-note="${note ? note.text : ''}"
-           data-admin="${note ? note.admin : false}">
-        ${day}
-      </div>`;
-  }
-
-  // Add click events to each day
-  document.querySelectorAll(".day").forEach((day) =>
-    day.addEventListener("click", openNoteModal)
-  );
-}
-
-// Open the modal for adding a note
-function openNoteModal(e) {
-  const selectedDate = e.target.dataset.date;
-  const existingNote = notes[selectedDate];
-
-  // If the note exists and was added by admin, non-admin users can't edit it
-  if (existingNote && existingNote.admin && currentUserRole !== "admin") {
-    alert("This note was added by the admin and cannot be edited.");
-    return;
-  }
-
-  noteInput.value = existingNote ? existingNote.text : "";
-  noteModal.dataset.date = selectedDate;
-  noteModal.style.display = "block";
-}
-
-// Save the note
-saveNoteBtn.addEventListener("click", () => {
-  const selectedDate = noteModal.dataset.date;
-  const noteText = noteInput.value.trim();
-
-  if (noteText) {
-    notes[selectedDate] = {
-      text: noteText,
-      admin: currentUserRole === "admin", // Mark if the note is from an admin
-    };
-  } else {
-    delete notes[selectedDate]; // Remove note if empty
-  }
-
-  // Save notes to localStorage (simulating a backend)
-  localStorage.setItem("calendarNotes", JSON.stringify(notes));
-
-  renderCalendar();
-  noteModal.style.display = "none";
-});
-
-// Close the modal
-closeModal.addEventListener("click", () => {
-  noteModal.style.display = "none";
-});
-
-// Change month
-prevMonthBtn.addEventListener("click", () => {
-  currentDate.setMonth(currentDate.getMonth() - 1);
-  renderCalendar();
-});
-
-nextMonthBtn.addEventListener("click", () => {
-  currentDate.setMonth(currentDate.getMonth() + 1);
-  renderCalendar();
-});
-
-// Initialize the calendar
-renderCalendar();
-
-
-
-
-
-
 // QR and PDF Generation
 document.getElementById('concernForm').addEventListener('submit', async (e) => {
   e.preventDefault();
@@ -469,17 +348,17 @@ document.getElementById('concernForm').addEventListener('submit', async (e) => {
   const pdf = new jsPDF();
 
   pdf.setFontSize(16);
-  pdf.text("Submitted Concern", 20, 20);
+  pdf.text("Concern Details", 20, 20);
   pdf.setFontSize(12);
 
   // Add form data to PDF
-  pdf.text(`Department: ${deptState}`, 20, 30);
+  pdf.text(`Department: ${deptState}`, 20, 40);
   pdf.text(`Program: ${programState}`, 20, 40);
-  pdf.text(`Course: ${courseState}`, 20, 50);
-  pdf.text(`Educator: ${educState}`, 20, 60);
-  pdf.text(`Concern: ${concernState}`, 20, 70);
-  pdf.text(`Other Concern: ${otherConcernState}`, 20, 80);
-  pdf.text(`Short Description of Concern: ${desConcernState}`, 20, 90);
+  pdf.text(`Course: ${courseState}`, 20, 40);
+  pdf.text(`Educator: ${educState}`, 20, 40);
+  pdf.text(`Concern: ${concernState}`, 20, 40);
+  pdf.text(`Other Concern: ${otherConcernState}`, 20, 40);
+  pdf.text(`Short Description of Concern: ${desConcernState}`, 20, 40);
 
   // Add QR Code to PDF
   pdf.addImage(qrCodeUrl, 'PNG', 20, 110, 50, 50);
@@ -487,6 +366,6 @@ document.getElementById('concernForm').addEventListener('submit', async (e) => {
   // Save and trigger the PDF download
   pdf.save('Submitted_Concern.pdf');
 
-  // Optional: Redirect to the downloaded file (if it's available in your server or file location)
+  //Optional: Redirect to the downloaded file (if it's available in your server or file location)
   // window.location.href = 'path_to_the_generated_pdf_file';
-});
+  });
