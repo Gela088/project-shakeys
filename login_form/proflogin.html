@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Educator's Login Form</title>
+        <link rel="stylesheet" href="assets/css/login.css">
+    
+        <!-- Google Fonts -->
+        <link href="https://fonts.gstatic.com" rel="preconnect">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+    
+          <!-- Favicons -->
+        <link href="assets/img/Clogo.png" rel="icon">
+        <link href="assets/img/Clogo.png" rel="apple-touch-icon">
+    
+    </head>
+    
+    
+    <header id="header" class="header fixed-top d-flex align-items-center">
+    
+        <div class="d-flex align-items-center justify-content-between">
+          <a class="logo d-flex align-items-center">
+            <img src="assets/img/WBlogo.png" alt=""> <!-- LOGO @ Top -->
+            <span>Bridging the Gap</span>
+          </a>
+        </div><!-- End Logo -->
+        
+    </header><!-- End Header -->
+
+
+
+<body>
+  <div class="main-container">
+    <div class="left-section">
+      <img src="assets/img/teachlog.png" alt="Characters Image" class="illustration" />
+    </div>
+
+    <div class="login-container">
+      <h1>Login</h1>
+
+      <form action="dashboard.html" method="GET">
+        
+        <label for="email">Email / Instructor Number:</label>
+        <input type="text" id="email" name="email" placeholder="Email / Instructor Number" required><br><br>
+        <label for="access-code">Access Code:</label>
+        <input type="text" id="access-code" name="access-code" placeholder="Access Code" required><br><br>
+
+        <!-- Small Centered Login Button -->
+        <button type="submit" class="center-login-btn">Login</button>
+
+        <p></p>
+
+        <div class="links">
+          <a href="#">Register Account</a> | 
+          <a href="#">Forget Password?</a>
+        </div>
+        
+        <p></p>
+
+        <button class="btntype2">
+          <img src="google-icon.png" alt="Google Icon" />Sign in with School Email
+        </button>
+        
+      </form>
+
+    </div>
+    
+  </div>
+</body>
+</html>

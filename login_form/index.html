@@ -3,79 +3,95 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register & Login</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
+    <title>Register</title>
+    <style>
+        /* Add basic styles for better layout */
+        .input-group input, .passrec-group input, select {
+            display: block;
+            width: 100%;
+            margin-bottom: 10px;
+            padding: 10px;
+        }
+
+        .submit-btn {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+
+        .submit-btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
 </head>
 <body>
-    <div class="container" id="signup" style="display:none;">
-      <h1 class="form-title">Register</h1>
-      <form method="post" action="register.php">
-        <div class="input-group">
-           <i class="fas fa-user"></i>
-           <input type="text" name="fName" id="fName" placeholder="First Name" required>
-           <label for="fName">First Name</label>
-        </div>
-        <div class="input-group">
-            <i class="fas fa-user"></i>
-            <input type="text" name="lName" id="lName" placeholder="Last Name" required>
-            <label for="lName">Last Name</label>
-        </div>
-        <div class="input-group">
-            <i class="fas fa-envelope"></i>
-            <input type="email" name="email" id="email" placeholder="Email" required>
-            <label for="email">Email</label>
-        </div>
-        <div class="input-group">
-            <i class="fas fa-lock"></i>
-            <input type="password" name="password" id="password" placeholder="Password" required>
-            <label for="password">Password</label>
-        </div>
-       <input type="submit" class="btn" value="Sign Up" name="signUp">
-      </form>
-      <p class="or">
-        ----------or--------
-      </p>
-      <div class="icons">
-        <i class="fab fa-google"></i>
-        <i class="fab fa-facebook"></i>
-      </div>
-      <div class="links">
-        <p>Already Have Account?</p>
-        <button id="signInButton">Sign In</button>
-      </div>
+
+<h2>Register Account</h2>
+
+<form class="register-form" id="regForm" action="register.php" method="POST">
+    <h2>Register Account</h2>
+
+    <!-- Full Name Row (Surname, First Name, M.I.) -->
+    <div class="input-group" id="fullName">
+        <input type="text" name="lastName" placeholder="Surname" required>
+        <input type="text" name="firstName" placeholder="First Name" required>
+        <input type="text" name="middleInitial" placeholder="M.I.">
     </div>
 
-    <div class="container" id="signIn">
-        <h1 class="form-title">Sign In</h1>
-        <form method="post" action="login.php"> <!-- Changed action to login.php -->
-          <div class="input-group">
-              <i class="fas fa-envelope"></i>
-              <input type="email" name="email" id="email" placeholder="Email" required>
-              <label for="email">Email</label>
-          </div>
-          <div class="input-group">
-              <i class="fas fa-lock"></i>
-              <input type="password" name="password" id="password" placeholder="Password" required>
-              <label for="password">Password</label>
-          </div>
-          <p class="recover">
-            <a href="#">Recover Password</a>
-          </p>
-         <input type="submit" class="btn" value="Sign In" name="signIn">
-        </form>
-        <p class="or">
-          ----------or--------
-        </p>
-        <div class="icons">
-          <i class="fab fa-google"></i>
-          <i class="fab fa-facebook"></i>
-        </div>
-        <div class="links">
-          <p>Don't have account yet?</p>
-          <button id="signUpButton">Sign Up</button>
-        </div>
-      </div>
-      <script src="script.js"></script>
+    <!-- Email Box -->
+    <input type="email" name="email" placeholder="Email" required>
+
+    <!-- Password Section -->
+    <div class="passrec-group">
+        <input id="password" type="password" name="password" placeholder="Password" required>
+        <input id="confirmPassword" type="password" name="confirmPassword" placeholder="Confirm Password" required>
+    </div>
+
+    <!-- Show Password Checkbox -->
+    <div class="passrec-group">
+        <input type="checkbox" id="showPasswordCheckbox" style="width: auto; margin-right: 10px;">
+        <label for="showPasswordCheckbox">Show Password</label>
+    </div>
+
+    <!-- Identity, Department, Program, and Course Dropdowns -->
+    <select id="identity" name="identity" required>
+        <option value="" disabled selected>Register As:</option>
+        <option value="Educator">Educator</option>
+        <option value="Student">Student</option>
+    </select>
+
+    <select id="department" name="department" required>
+        <option value="" disabled selected>Select Department</option>
+        <option value="Computer Studies and Systems">Department of Computer Studies and Systems</option>
+        <option value="Engineering">Department of Engineering</option>
+    </select>
+
+    <select id="program" name="program" required>
+        <option value="" disabled selected>Select Program</option>
+    </select>
+
+    <select id="course" name="course" required>
+        <option value="" disabled selected>Select Course</option>
+    </select>
+
+    <!-- Submit Button -->
+    <button type="submit" class="submit-btn">Submit</button>
+</form>
+
+<script>
+    // Show password toggle
+    const passwordField = document.getElementById('password');
+    const confirmPasswordField = document.getElementById('confirmPassword');
+    const showPasswordCheckbox = document.getElementById('showPasswordCheckbox');
+
+    showPasswordCheckbox.addEventListener('change', () => {
+        const type = showPasswordCheckbox.checked ? 'text' : 'password';
+        passwordField.type = type;
+        confirmPasswordField.type = type;
+    });
+</script>
+
 </body>
 </html>

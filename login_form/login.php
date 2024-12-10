@@ -1,9 +1,11 @@
 <?php
-// Database connection
+session_start();
+
+// Database connection settings
 $servername = "localhost";
-$username = "root"; // Your MySQL username
-$password = ""; // Your MySQL password
-$dbname = "project_shakeys"; // Your database name
+$username = "root";
+$password = "";
+$dbname = "project_shakeys";
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -13,33 +15,50 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// Handle user login
-if (isset($_POST['signIn'])) {
+// Handle login
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['login'])) {
     // Get form data
-    $email = $_POST['email'];
+    $email = trim($_POST['email']);
     $password = $_POST['password'];
 
-    // SQL query to fetch user
-    $sql = "SELECT first_name, last_name, password_hash FROM users WHERE email = ?";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("s", $email);
-    $stmt->execute();
-    $stmt->bind_result($firstName, $lastName, $hashedPassword);
-
-    if ($stmt->fetch() && password_verify($password, $hashedPassword)) {
-        // Start the session and set session variables
-        session_start();
-        $_SESSION['email'] = $email;
-        $_SESSION['firstName'] = $firstName;
-        $_SESSION['lastName'] = $lastName;
-
-        // Redirect to homepage or dashboard
-        echo "<script>alert('Login successful!'); window.location.href='homepage.php';</script>";
-    } else {
-        echo "<script>alert('Invalid email or password.'); window.location.href='index.html';</script>";
+    // Validate inputs
+    if (empty($email) || empty($password)) {
+        echo "<script>alert('Email and password are required.'); window.history.back();</script>";
+        exit;
     }
 
-    $stmt->close();
+    // Check if user exists
+    $sql = "SELECT id, firstName, password FROM users WHERE email = ?";
+    if ($stmt = $conn->prepare($sql)) {
+        $stmt->bind_param("s", $email);
+        $stmt->execute();
+        $stmt->store_result();
+
+        if ($stmt->num_rows > 0) {
+            // User found, fetch user details
+            $stmt->bind_result($userId, $firstName, $hashedPassword);
+            $stmt->fetch();
+
+            // Verify password
+            if (password_verify($password, $hashedPassword)) {
+                // Password is correct, start session
+                $_SESSION['userId'] = $userId;
+                $_SESSION['userName'] = $firstName; // Store first name in session
+                header('Location: dashboard.php'); // Redirect to dashboard
+                exit;
+            } else {
+                // Incorrect password
+                echo "<script>alert('Invalid email or password.'); window.history.back();</script>";
+            }
+        } else {
+            // User not found
+            echo "<script>alert('Invalid email or password.'); window.history.back();</script>";
+        }
+
+        $stmt->close();
+    } else {
+        echo "<script>alert('Database error. Please try again later.'); window.history.back();</script>";
+    }
 }
 
 // Close connection
