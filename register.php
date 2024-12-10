@@ -1,23 +1,27 @@
 <?php
-include 'db_connect.php';
+// register.php
+require 'config.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_POST['username'];
+    $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
     $email = $_POST['email'];
-    $password = password_hash($_POST['password'], PASSWORD_BCRYPT); // Hash the password
 
-    // Insert user into the database
-    $sql = "INSERT INTO users (username, email, password) VALUES (?, ?, ?)";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("sss", $username, $email, $password);
-
+    $stmt = $conn->prepare("INSERT INTO users (username, password, email) VALUES (?, ?, ?)");
+    $stmt->bind_param("sss", $username, $password, $email);
+    
     if ($stmt->execute()) {
-        echo json_encode(["message" => "Registration successful"]);
+        echo "Registration successful!";
     } else {
-        echo json_encode(["message" => "Error: " . $stmt->error]);
+        echo "Error: " . $stmt->error;
     }
-
     $stmt->close();
 }
-$conn->close();
 ?>
+
+<form method="POST" action="">
+    <input type="text" name="username" placeholder="Username" required>
+    <input type="password" name="password" placeholder="Password" required>
+    <input type="email" name="email" placeholder="Email" required>
+    <button type="submit">Register</button>
+</form>

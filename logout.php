@@ -1,6 +1,7 @@
 <?php
-session_start(); // Start the session
-session_destroy(); // Destroy the session
-header("Location: login.php"); // Redirect to the login page
-exit(); // Ensure no further code is executed
+// logout.php
+session_start();
+session_destroy();
+header("Location: login.php");
+exit();
 ?>
