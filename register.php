@@ -1,36 +1,23 @@
 <?php
-// register.php
+include 'db_connect.php';
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Database connection
-    $conn = new mysqli("localhost", "root", "", "project_shakeys");
-
-    // Check connection
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
-
-    // Get user input
     $username = $_POST['username'];
     $email = $_POST['email'];
-    $password = password_hash($_POST['password'], PASSWORD_DEFAULT); // Hash the password
+    $password = password_hash($_POST['password'], PASSWORD_BCRYPT); // Hash the password
 
     // Insert user into the database
-    $sql = "INSERT INTO users (username, email, password) VALUES ('$username', '$email', '$password')";
-    
-    if ($conn->query($sql) === TRUE) {
-        echo "Registration successful!";
+    $sql = "INSERT INTO users (username, email, password) VALUES (?, ?, ?)";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("sss", $username, $email, $password);
+
+    if ($stmt->execute()) {
+        echo json_encode(["message" => "Registration successful"]);
     } else {
-        echo "Error: " . $sql . "<br>" . $conn->error;
+        echo json_encode(["message" => "Error: " . $stmt->error]);
     }
 
-    $conn->close();
+    $stmt->close();
 }
+$conn->close();
 ?>
-
-<!-- HTML Form for Registration -->
-<form method="POST" action="register.php">
-    <input type="text" name="username" placeholder="Username" required>
-    <input type="email" name="email" placeholder="Email" required>
-    <input type="password" name="password" placeholder="Password" required>
-    <button type="submit">Register</button>
-</form>
